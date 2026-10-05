@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaringan Komputer - Modul Kabel LAN | Zahrah Nabila</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #FFF5F7;
+            --bg-card: #FFFFFF;
+            --pink-soft: #FDE8ED;
+            --pink-main: #F48FB1;
+            --pink-accent: #E91E63;
+            --pink-dark: #880E4F;
+            --text-main: #4A3E3D;
+            --text-muted: #7A6A68;
+            --shadow: 0 10px 30px rgba(233, 30, 99, 0.08);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--pink-soft);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--pink-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--pink-accent);
+        }
+
+        /* Hero / Profile Section */
+        .hero {
+            background: linear-gradient(135deg, #FFF0F4 0%, #FCE4EC 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--pink-soft);
+        }
+
+        .profile-card {
+            background: var(--bg-card);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--pink-soft);
+        }
+
+        .profile-card h1 {
+            color: var(--pink-dark);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--pink-soft);
+            color: var(--pink-accent);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            text-align: left;
+            margin-top: 1rem;
+            background: #FFF9FA;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .profile-item strong {
+            color: var(--pink-dark);
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        /* Content Layout */
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(244, 143, 177, 0.2);
+        }
+
+        .section-title {
+            color: var(--pink-dark);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid var(--pink-soft);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #FFF9FA;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--pink-soft);
+        }
+
+        .card h3 {
+            color: var(--pink-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Steps List */
+        .steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .steps li {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .steps li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--pink-main);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--pink-soft);
+        }
+
+        th {
+            background-color: var(--pink-soft);
+            color: var(--pink-dark);
+        }
+
+        /* Video & PPT Embeds */
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            background: #000;
+            margin-top: 1rem;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--pink-accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-download:hover {
+            background: var(--pink-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #FFF0F4;
+            color: var(--text-muted);
+            border-top: 1px solid var(--pink-soft);
+            margin-top: 4rem;
+        }
+
+        /* Responsive Mobile Styling */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .profile-card h1 {
+                font-size: 1.6rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-network-wired"></i> NetworkLab
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#pendahuluan">Pendahuluan</a></li>
+                <li><a href="#alat">Alat</a></li>
+                <li><a href="#kabel">Perangkaian</a></li>
+                <li><a href="#sharing">Koneksi & Sharing</a></li>
+                <li><a href="#media">PPT & Video</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero / Identity Profile -->
+    <section class="hero">
+        <div class="profile-card">
+            <span class="badge">Laporan Tugas Jaringan Komputer</span>
+            <h1>Zahrah Nabila</h1>
+            <p style="color: var(--text-muted);">Kelas: 1TIB</p>
+
+            <div class="profile-info">
+                <div class="profile-item">
+                    <strong>Perguruan Tinggi</strong>
+                    Politeknik Negeri Sriwijaya
+                </div>
+                <div class="profile-item">
+                    <strong>Jurusan / Prodi</strong>
+                    Teknik Komputer / Teknologi Informatika Multimedia Digital
+                </div>
+                <div class="profile-item">
+                    <strong>Mata Kuliah</strong>
+                    Jaringan Komputer
+                </div>
+                <div class="profile-item">
+                    <strong>Dosen Pengampu</strong>
+                    Dr. Ali Firdaus, S.Kom., M.Kom
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="container">
+
+        <!-- 1. Pendahuluan -->
+        <section id="pendahuluan" class="section">
+            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Pendahuluan: Kabel LAN / Ethernet</h2>
+            <p><strong>Kabel LAN (Local Area Network)</strong> atau dikenal juga sebagai kabel Ethernet adalah media transmisi fisik berbentuk kabel yang digunakan untuk menghubungkan berbagai perangkat komputer (seperti Laptop, PC, Router, dan Switch) dalam suatu jaringan area lokal.</p>
+            <br>
+            <p>Kabel LAN mentransmisikan sinyal data elektronik dari satu perangkat ke perangkat lainnya dengan kecepatan tinggi dan stabilitas yang jauh lebih baik dibandingkan jaringan nirkabel (Wi-Fi).</p>
+        </section>
+
+        <!-- 2. Alat-Alat -->
+        <section id="alat" class="section">
+            <h2 class="section-title"><i class="fa-solid fa-toolbox"></i> Alat dan Bahan Perakitan</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>1. Kabel UTP (Cat5e / Cat6)</h3>
+                    <p>Kabel berpasangan terpilin tanpa pelindung yang berisi 8 helai kawat warna-warni sebagai jalur transmisi data.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Konektor RJ-45</h3>
+                    <p>Konektor standar di kedua ujung kabel yang dimasukkan ke port LAN pada komputer/switch.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Tang Crimp (Crimping Tool)</h3>
+                    <p>Alat pemotong, pengupas kabel, dan pengunci pin tembaga konektor RJ-45 ke kawat kabel.</p>
+                </div>
+                <div class="card">
+                    <h3>4. LAN Tester</h3>
+                    <p>Alat uji untuk memverifikasi apakah seluruh 8 pin terhubung dengan benar dan tidak ada arus terputus.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Pembuatan Kabel LAN Cross-Over -->
+        <section id="kabel" class="section">
+            <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i> Cara Membuat Kabel LAN (Tipe Cross-Over)</h2>
+            <p>Kabel <strong>Crossover</strong> digunakan untuk menghubungkan dua perangkat yang sejenis (seperti Laptop ke Laptop) secara langsung tanpa Switch/Hub.</p>
+            <br>
+            
+            <h3>Urutan Pin Warna Kabel:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pin</th>
+                        <th>Ujung A (Straight T568B)</th>
+                        <th>Ujung B (Cross T568A)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Putih-Oranye</td><td>Putih-Hijau</td></tr>
+                    <tr><td>2</td><td>Oranye</td><td>Hijau</td></tr>
+                    <tr><td>3</td><td>Putih-Hijau</td><td>Putih-Oranye</td></tr>
+                    <tr><td>4</td><td>Biru</td><td>Biru</td></tr>
+                    <tr><td>5</td><td>Putih-Biru</td><td>Putih-Biru</td></tr>
+                    <tr><td>6</td><td>Hijau</td><td>Oranye</td></tr>
+                    <tr><td>7</td><td>Putih-Cokelat</td><td>Putih-Cokelat</td></tr>
+                    <tr><td>8</td><td>Cokelat</td><td>Cokelat</td></tr>
+                </tbody>
+            </table>
+            <br>
+
+            <h3>Langkah-Langkah Pembuatan:</h3>
+            <ol class="steps">
+                <li>Kupas jaket pelindung kabel UTP sepanjang 2 cm menggunakan tang crimp.</li>
+                <li>Luruskan dan pisahkan 8 helai kawat warna-warni di dalamnya.</li>
+                <li>Urutkan susunan warna kawat sesuai standar T568B pada Ujung A dan T568A pada Ujung B.</li>
+                <li>Ratakan dan potong rapi ujung kawat hingga tersisa sekitar 1.2 cm.</li>
+                <li>Masukan kawat ke dalam konektor RJ-45 hingga seluruh ujung kawat menyentuh dasar konektor.</li>
+                <li>Jepit konektor RJ-45 menggunakan tang crimp hingga terdengar bunyi klik.</li>
+                <li>Uji kedua ujung kabel menggunakan LAN Tester. Pada tipe Cross, lampu LED akan menyala silang (1-3, 2-6, 3-1, 6-2).</li>
+            </ol>
+        </section>
+
+        <!-- 4. Menghubungkan 2 Laptop & Sharing File -->
+        <section id="sharing" class="section">
+            <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> Menghubungkan 2 Laptop & Transfer File</h2>
+            
+            <h3>Step 1: Setting IP Address Static</h3>
+            <ol class="steps">
+                <li>Tancapkan ujung kabel LAN Cross pada port Ethernet Laptop A dan Laptop B.</li>
+                <li>Di kedua laptop, buka <strong>Control Panel > Network and Sharing Center > Change adapter settings</strong>.</li>
+                <li>Klik kanan pada <strong>Ethernet</strong> > Pilih <strong>Properties</strong> > Klik 2x pada <strong>Internet Protocol Version 4 (TCP/IPv4)</strong>.</li>
+                <li>
+                    Atur IP Static sebagai berikut:
+                    <ul>
+                        <li><strong>Laptop A:</strong> IP = <code>192.168.1.1</code> | Subnet Mask = <code>255.255.255.0</code></li>
+                        <li><strong>Laptop B:</strong> IP = <code>192.168.1.2</code> | Subnet Mask = <code>255.255.255.0</code></li>
+                    </ul>
+                </li>
+            </ol>
+
+            <br>
+            <h3>Step 2: Pengecekan Keterhubungan (Ping Test)</h3>
+            <p>Untuk memastikan kedua laptop sudah saling terhubung:</p>
+            <ol class="steps">
+                <li>Buka <strong>Command Prompt (CMD)</strong> pada Laptop A.</li>
+                <li>Ketik perintah: <code>ping 192.168.1.2</code> lalu tekan Enter.</li>
+                <li>Jika muncul balasan <code>Reply from 192.168.1.2: bytes=32 time<1ms TTL=128</code>, maka kedua laptop sudah **sukses terhubung**. Jika <code>Request Timed Out</code>, periksa kembali kabel atau matikan Windows Firewall.</li>
+            </ol>
+
+            <br>
+            <h3>Step 3: Cara Transfer File (Folder Sharing)</h3>
+            <ol class="steps">
+                <li>Klik kanan folder yang ingin dibagikan pada Laptop A > Pilih <strong>Properties</strong>.</li>
+                <li>Masuk ke tab <strong>Sharing</strong> > Klik tombol <strong>Advanced Sharing</strong>.</li>
+                <li>Centang opsi <strong>Share this folder</strong>, lalu klik <strong>Permissions</strong> dan atur ke <em>Full Control / Read</em>.</li>
+                <li>Di Laptop B, buka <strong>File Explorer</strong> dan ketik di address bar: <code>\\192.168.1.1</code> lalu tekan Enter.</li>
+                <li>Folder yang dibagikan akan muncul dan file siap diakses/diunduh secara langsung.</li>
+            </ol>
+        </section>
+
+        <!-- 5. PPT & Video YouTube Section -->
+        <section id="media" class="section">
+            <h2 class="section-title"><i class="fa-solid fa-file-powerpoint"></i> PPT & Video Tutorial</h2>
+            
+            <!-- PPT Section -->
+            <div style="margin-bottom: 2.5rem;">
+                <h3>PPT Presentasi Jaringan Komputer</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Anda dapat langsung melihat preview tayangan slide PowerPoint di bawah ini atau mengunduhnya.</p>
+                
+                <!-- Preview PPT (Menggunakan Google Docs Viewer) -->
+                <div class="embed-container">
+                    <iframe src="https://docs.google.com/gview?url=https://example.com/buat_presentasi.pptx&embedded=true" frameborder="0"></iframe>
+                </div>
+                
+                <a href="buat_presentasi.pptx" download="buat_presentasi.pptx" class="btn-download">
+                    <i class="fa-solid fa-download"></i> Download PPT (buat_presentasi.pptx)
+                </a>
+            </div>
+
+            <!-- YouTube Video Section -->
+            <div class="grid-2">
+                <div>
+                    <h3>Video 1: Cara Merangkai Kabel LAN Tipe Cross</h3>
+                    <div class="embed-container">
+                        <iframe src="https://www.youtube.com/embed/SlSLwTxv8go" title="Cara Merangkai Kabel LAN Cross" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div>
+                    <h3>Video 2: Setting IP & Sharing File 2 Laptop</h3>
+                    <div class="embed-container">
+                        <iframe src="https://www.youtube.com/embed/AZ73pBCexLY" title="Cara Menghubungkan 2 Laptop dan Sharing File" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Zahrah Nabila - Politeknik Negeri Sriwijaya (1TIB)</p>
+        <p style="font-size: 0.85rem; margin-top: 5px;">Jurusan Teknik Komputer | Teknologi Informatika Multimedia Digital</p>
+    </footer>
+
+</body>
+</html>
